@@ -8,11 +8,15 @@ using Images, FileIO, Colors, FixedPointNumbers, Statistics
 #size of the rendered canvas in pixels. it is always a square canvas
 CANVAS_SIZE = 3000
 #parameters governing the iterations
-A=1.95 B=1.4 C=1.8 D=1.8
+A=1.95 
+B=1.4 
+C=1.8 
+D=1.8
 #number of points to render.
 NUM_POINTS=100000000
 #initial value
-X_INIT=0 Y_INIT=0
+X_INIT=0 
+Y_INIT=0
 #proportion of the canvas to be kept as a margin
 MARGIN=0.05
 #file path to save to
