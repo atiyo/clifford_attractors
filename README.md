@@ -1,6 +1,7 @@
 # Clifford Attractors in Julia
 
-Because they are nice to look at. The implementation given should scale to high resolutions with many iterations. Rendering 100 million iterations on a 9 megapixel canvas takes around 30 seconds on my ageing laptop. Rendering 1 billion takes a couple of minutes.
+Because they are nice to look at. The implementation given should scale to high resolutions with many iterations. Rendering 100 million iterations on a 9 megapixel canvas takes around 30 seconds on my ageing laptop. Rendering 1 billion iterations
+takes a couple of minutes.
 
 ## Make your own
 
