@@ -6,29 +6,29 @@ using Images, FileIO, Colors, FixedPointNumbers, Statistics
 # y_{n+1} = sin(b x_n) + d cos(b y_n)
 
 #size of the rendered canvas in pixels. it is always a square canvas
-CANVAS_SIZE = 3000
+CANVAS_SIZE = 1500
 #parameters governing the iterations
-A=1.95 
-B=1.4 
-C=1.8 
-D=1.8
+A=1.4
+B=1.2
+C=1.4
+D=1.7
 #number of points to render.
-NUM_POINTS=100000000
+NUM_POINTS=Int(1e9)
 #initial value
 X_INIT=0 
 Y_INIT=0
 #proportion of the canvas to be kept as a margin
-MARGIN=0.05
+MARGIN=0.15
 #file path to save to
-OUT_FILE_NAME="./image_6.jpg"
+OUT_FILE_NAME="./image_2.jpg"
 #what percentile of the clifford attractor should not be completely saturated
 #by color?
-PERCENTILE_CLIP = 0.98
+PERCENTILE_CLIP = 0.998
 #what color should the attractor be? it will always be on a white background.
 #you can invert it to black with the INVERSE parameter below.  grabbing some
 #some sample color palettes from the ColorBrewer package which look nice.
 #COLORS=((0.4,0.761,0.647),(0.988,0.553,0.384),(0.553,0.627,0.796))
-COLOR=(0.4,0.761,0.647)
+COLOR=(0.988,0.553,0.384)
 #the default is the above color (in rgb) on a white background. you can invert
 #all colors using this parameter.
 INVERSE=false
