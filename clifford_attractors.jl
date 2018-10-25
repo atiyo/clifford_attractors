@@ -8,19 +8,22 @@ using Images, FileIO, Colors, FixedPointNumbers, Statistics
 #size of the rendered canvas in pixels. it is always a square canvas
 CANVAS_SIZE = 1500
 #parameters governing the iterations
-A=1.4
-B=1.2
-C=1.4
-D=1.7
+A=2.2
+B=1.8
+C=1.2
+D=1.3
 #number of points to render.
 NUM_POINTS=Int(1e9)
 #initial value
 X_INIT=0 
 Y_INIT=0
 #proportion of the canvas to be kept as a margin
-MARGIN=0.15
+MARGIN=0.025
 #file path to save to
-OUT_FILE_NAME="./image_2.jpg"
+OUT_FILE_NAME="./image_6.jpg"
+#occupancy root. smaller values lead to a more even image. higher values
+#increase the rendered contrast. smaller values lead to an even image.
+OCCUPANCY_ROOT = 1/4
 #what percentile of the clifford attractor should not be completely saturated
 #by color?
 PERCENTILE_CLIP = 0.998
@@ -28,10 +31,10 @@ PERCENTILE_CLIP = 0.998
 #you can invert it to black with the INVERSE parameter below.  grabbing some
 #some sample color palettes from the ColorBrewer package which look nice.
 #COLORS=((0.4,0.761,0.647),(0.988,0.553,0.384),(0.553,0.627,0.796))
-COLOR=(0.988,0.553,0.384)
+COLOR=(0.553,0.627,0.796)
 #the default is the above color (in rgb) on a white background. you can invert
 #all colors using this parameter.
-INVERSE=false
+INVERSE=true
 
 
 
@@ -91,7 +94,7 @@ function update_state(a,b,c,d,(x, y))
     (new_x, new_y)
 end
 
-function clifford_attractor(a, b, c, d, num_points, canvas_size, margin, x_init, y_init, percentile_clip)
+function clifford_attractor(a, b, c, d, num_points, canvas_size, margin, x_init, y_init, percentile_clip, occupancy_root)
     plot_scale_params = create_plot_scalers(c, d, margin)
     canvas = zeros(canvas_size, canvas_size)
     state = (x_init, y_init)
@@ -100,6 +103,7 @@ function clifford_attractor(a, b, c, d, num_points, canvas_size, margin, x_init,
         state = update_state(a,b,c,d,state) 
         increment_canvas!(canvas, state, canvas_size, plot_scale_params)
     end
+    canvas = canvas.^occupancy_root
     scale = quantile(canvas[canvas.>0], percentile_clip)
     canvas/scale
 end
@@ -130,8 +134,8 @@ function main(a=A, b=B, c=C, d=D,
               num_points=NUM_POINTS, x_init=X_INIT, y_init=Y_INIT, 
               canvas_size=CANVAS_SIZE, margin=MARGIN, 
               out_file_name=OUT_FILE_NAME, 
-              percentile_clip=PERCENTILE_CLIP, color=COLOR, inverse=INVERSE)
-    output = clifford_attractor(a, b, c, d, num_points, canvas_size, margin, x_init, y_init, percentile_clip)
+              percentile_clip=PERCENTILE_CLIP, occupancy_root=OCCUPANCY_ROOT, color=COLOR, inverse=INVERSE)
+    output = clifford_attractor(a, b, c, d, num_points, canvas_size, margin, x_init, y_init, percentile_clip, occupancy_root)
     img = render_img(output,color)
     if !inverse
         img = RGB{N0f8}(1.,1.,1.) .- img
