@@ -8,9 +8,9 @@ Images here were made with Julia 1.0 using the Images, FileIO, Colors, FixedPoin
 
 ## Samples
 
-![image_1](image_1.jpg =500x) 
-![image_2](image_2.jpg =500x)
-![image_3](image_3.jpg =500x)
-![image_4](image_4.jpg =500x)
-![image_5](image_5.jpg =500x)
-![image_6](image_6.jpg =500x)
+![image_1](image_1.jpg) 
+![image_2](image_2.jpg)
+![image_3](image_3.jpg)
+![image_4](image_4.jpg)
+![image_5](image_5.jpg)
+![image_6](image_6.jpg)
