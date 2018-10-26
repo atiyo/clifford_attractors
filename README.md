@@ -9,5 +9,5 @@ Images here were made with Julia 1.0 using the Images, FileIO, Colors, FixedPoin
 ## Samples
 There are some attractors on black backgrounds (`images_{4,5,6}.jpg`) which are not included below but are included in the repository.
 <span>|<span>|<span>
-----|----|----
+-------|-------|-------
 ![image_1](image_1.jpg) | ![image_2](image_2.jpg) | ![image_3](image_3.jpg)
